@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize'
+import { Sequelize, DataTypes, Model } from 'sequelize'
 import sequelize from '../database'
 import Score from './Score'
 
@@ -7,10 +7,10 @@ class User extends Model {}
 User.init(
   {
     id: {
-      type: DataTypes.UUIDV4,
+      type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      allowNull: false,
+      unique: true,
     },
 
     name: {
@@ -43,10 +43,10 @@ User.init(
       allowNull: false,
     },
   },
-  { sequelize }
+  { sequelize, modelName: 'user' }
 )
 
-User.hasMany(Score)
-Score.belongsTo(User)
+// User.hasMany(Score)
+// Score.belongsTo(User)
 
 export default User
