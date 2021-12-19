@@ -6,23 +6,14 @@ const databaseConfig = {
   user: process.env.USER || '',
 }
 
-const sequelize = new Sequelize(
-  databaseConfig.database,
-  databaseConfig.user,
-  databaseConfig.password,
-  {
-    host: process.env.HOST || 'localhost',
-    dialect: 'mysql',
-  }
-)
+const sequelize = new Sequelize('', '', '', {
+  host: process.env.HOST || 'localhost',
+  dialect: 'mysql',
+})
 
-;(async () => {
-  try {
-    await sequelize.authenticate()
-  } catch (error) {
-    console.error('Unable to connect to the database:', error)
-    sequelize.close()
-  }
-})()
+sequelize.authenticate().catch(error => {
+  console.error('Unable to connect to the database:', error)
+  sequelize.close()
+})
 
 export default sequelize
