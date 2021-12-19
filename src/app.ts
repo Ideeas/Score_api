@@ -7,7 +7,8 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 3000
 
-sequelize.sync()
+sequelize.sync().catch(error => new Error(error))
+
 app.use(express.json())
 
 app.use('/api', UserRouter)
