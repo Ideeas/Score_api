@@ -1,15 +1,15 @@
 import { Request, Response } from 'express'
 
 import UserModel from '../Models/User'
-import hasUnfilledField from '../global/functions/hasUnFilledField'
+import Functions from '../global/functions'
 
 class UserController {
   async create(req: Request, res: Response) {
-    if (hasUnfilledField(req.body)) {
+    if (Functions.hasUnfilledField(req.body)) {
       res.status(400).send({ error: 'Bad Request' })
     }
-
     const { name, email, password, address, cpf, occupation } = req.body
+
     try {
       const user = await UserModel.create({
         name,
