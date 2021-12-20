@@ -4,12 +4,12 @@ export default class UserServices {
   async create(user: User) {
     try {
       const dbUser = await UserModel.create({
-        name: user.getName(),
-        email: user.getEmail(),
-        password: user.getPassword(),
-        address: user.getAdress(),
-        cpf: user.getCpf(),
-        occupation: user.getOcuppation(),
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        address: user.adress,
+        cpf: user.cpf,
+        occupation: user.occupation,
       })
       return dbUser
     } catch (error) {
