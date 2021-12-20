@@ -15,12 +15,11 @@ class UserController {
     }
 
     const { name, email, password, address, cpf, occupation } = req.body
-    const requestUser = new User({ name, email, password, address, cpf, occupation })
-    console.log(this.service)
+    const requestUser = new User(name, email, password, address, cpf, occupation)
 
     this.service
       .create(requestUser)
-      .then(user => res.status(201).send({ user }))
+      .then(user => res.status(201).send(user))
       .catch(error => {
         res.status(500).send({ error })
       })
