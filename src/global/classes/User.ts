@@ -1,25 +1,22 @@
-import Employer, { EmployerTypes } from './Employer'
-
-interface UserTypes extends EmployerTypes {
-  email: string
-  password: string
-}
+import Employer from './Employer'
 
 export default class User extends Employer {
-  private email: string
-  private password: string
-
-  constructor({ name, cpf, address, occupation, email, password }: UserTypes) {
-    super({ name, cpf, address, occupation })
-    this.email = email
-    this.password = password
+  constructor(
+    name: string,
+    cpf: string,
+    address: string,
+    occupation: string,
+    private _email: string,
+    private _password: string
+  ) {
+    super(name, cpf, address, occupation)
   }
 
-  getEmail() {
-    return this.email
+  get email() {
+    return this._email
   }
 
-  getPassword() {
-    return this.password
+  get password() {
+    return this._password
   }
 }

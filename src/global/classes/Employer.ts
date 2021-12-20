@@ -1,36 +1,24 @@
-export interface EmployerTypes {
-  name: string
-  cpf: string
-  address: string
-  occupation: string
-}
-
 export default class Employer {
-  private name: string
-  private cpf: string
-  private address: string
-  private occupation: string
+  constructor(
+    private _name: string,
+    private _cpf: string,
+    private _address: string,
+    private _occupation: string
+  ) {}
 
-  constructor({ name, cpf, address, occupation }: EmployerTypes) {
-    this.name = name
-    this.cpf = cpf
-    this.address = address
-    this.occupation = occupation
+  get name() {
+    return this._name
   }
 
-  getName() {
-    return this.name
+  get adress() {
+    return this._address
   }
 
-  getAdress() {
-    return this.address
+  get cpf() {
+    return this._cpf
   }
 
-  getCpf() {
-    return this.cpf
-  }
-
-  getOcuppation() {
-    return this.occupation
+  get occupation() {
+    return this._occupation
   }
 }
