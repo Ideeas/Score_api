@@ -1,11 +1,16 @@
 import { DataTypes, Model } from 'sequelize'
 import sequelize from '../database'
 import Score from './Score'
-import User from '../global/classes/User'
 
-type UserModelTypes = Required<User>
-
-class UserModel extends Model<UserModelTypes | {}> {}
+class UserModel extends Model {
+  id!: string
+  name!: string
+  email!: string
+  password!: string
+  address!: string
+  cpf!: string
+  occupation!: string
+}
 
 UserModel.init(
   {
