@@ -24,6 +24,16 @@ class UserController {
         res.status(500).send({ error })
       })
   }
+
+  auth(req: Request, res: Response) {
+    if (Functions.hasUnfilledField(req.body)) {
+      res.status(400).send({ error: 'Bad Request' })
+    }
+
+    const { email, password } = req.body
+
+    this.service.auth({ email, password })
+  }
 }
 
 export default new UserController(new UserServices())
